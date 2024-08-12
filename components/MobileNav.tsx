@@ -20,27 +20,27 @@ const links = [
 
   {
     name: "Services",
-    path: "/services",
+    path: "/pages/services",
   },
 
   {
     name: "Blog",
-    path: "/blog",
+    path: "/pages/blog",
   },
 
   {
     name: "FAQ",
-    path: "/faq",
+    path: "/pages/faq",
   },
 
   {
     name: "Contact",
-    path: "/contact",
+    path: "/pages/contact",
   },
 
   {
     name: "About Us",
-    path: "/about",
+    path: "/pages/about",
   },
 ];
 

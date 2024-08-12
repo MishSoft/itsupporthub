@@ -1,12 +1,16 @@
-// Hero.js
-"use client";
+// components/Hero.tsx
 import React from "react";
+import SearchBar from "./SearchBar";
+import CTAButton from "./CTAButton";
+import FeatureHighlights from "./FeatureHighlights";
+import NewsletterSignup from "./NewsletterSignup";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden text-white h-screen flex items-center justify-center">
+    <section className="relative overflow-hidden text-white py-24">
+      {/* Video Background */}
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover -z-20"
+        className="absolute top-0 h-screen left-0 w-full object-cover -z-10"
         autoPlay
         muted
         loop
@@ -15,22 +19,24 @@ const Hero = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 -z-10"></div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black opacity-50 -z-10"></div>
 
-      <div className="text-center px-6 md:px-12 lg:px-24 z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-          Solving Tech Problems, One Click at a Time
+      <div className="relative container mx-auto text-center px-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Your Go-To Solution for Computer Troubleshooting and Learning
         </h1>
-        <p className="text-lg md:text-xl lg:text-2xl mb-6">
-          Your trusted partner for reliable IT support, anytime, anywhere.
+        <p className="text-lg md:text-xl mb-8">
+          Expert advice, tutorials, and support for all your computer needs.
         </p>
-        <a
-          href="#services"
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg"
-        >
-          Get Started
-        </a>
+        <div className="mb-8">
+          <SearchBar />
+        </div>
+        <div className="mt-8 flex flex-col gap-4 items-center">
+          <CTAButton text="Get Help Now" link="/get-help" />
+          <CTAButton text="Explore Tutorials" link="/pages/tutorials" />
+        </div>
+        {/* Optionally include NewsletterSignup here if needed */}
       </div>
     </section>
   );

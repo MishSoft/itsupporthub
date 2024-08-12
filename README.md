@@ -1,34 +1,39 @@
-Computer Helpers
+# Computer Helpers
+
 Welcome to the Computer Helpers project! This website is designed to provide expert advice, tutorials, and support for all your computer needs, including troubleshooting, learning new software, and hardware advice.
 
-Table of Contents
-Features
-Getting Started
-Tech Stack
-File Structure
-Contributing
-License
-Features
-Hero Section: Eye-catching headline with a video background and call-to-action buttons.
-Services Page: Detailed information about our services with icons and descriptions.
-Blog Page: Latest articles and tutorials about computer issues and solutions.
-FAQ Page: Answers to frequently asked questions.
-Contact Page: Form to get in touch with us for support or inquiries.
-About Us Page: Information about our team and mission.
-Footer: Navigation links, social media icons, and legal notice.
-Getting Started
+## Table of Contents
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Tech Stack](#tech-stack)
+- [File Structure](#file-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+- **Hero Section:** Eye-catching headline with a video background and call-to-action buttons.
+- **Services Page:** Detailed information about our services with icons and descriptions.
+- **Blog Page:** Latest articles and tutorials about computer issues and solutions.
+- **FAQ Page:** Answers to frequently asked questions.
+- **Contact Page:** Form to get in touch with us for support or inquiries.
+- **About Us Page:** Information about our team and mission.
+- **Footer:** Navigation links, social media icons, and legal notice.
+- **Tutorial Videos:** Fetch and display programming tutorials from YouTube with a "Load More" button for pagination.
+
+## Getting Started
+
 To get started with the project, follow these steps:
 
-Prerequisites
+### Prerequisites
+
 Ensure you have the following installed:
+- Node.js
+- npm or yarn
 
-Node.js
-npm or yarn
-Installation
+### Installation
+
 Clone the repository:
-
-bash
-Copy code
+```bash
 git clone https://github.com/MishSoft/itsupporthub.git
 Navigate to the project directory:
 
@@ -91,10 +96,11 @@ Copy code
     - (other public assets)
   /styles
     - globals.css
-  - next.config.js
-  - tailwind.config.js
-  - tsconfig.json
-  - README.md
+
+next.config.js
+tailwind.config.js
+tsconfig.json
+README.md
 Contributing
 If you would like to contribute to the project, please follow these steps:
 
@@ -104,5 +110,3 @@ Make your changes.
 Commit your changes (git commit -am 'Add new feature').
 Push to the branch (git push origin feature/your-feature).
 Create a new Pull Request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.

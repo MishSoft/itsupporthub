@@ -1,80 +1,108 @@
+Computer Helpers
+Welcome to the Computer Helpers project! This website is designed to provide expert advice, tutorials, and support for all your computer needs, including troubleshooting, learning new software, and hardware advice.
 
-# ITSupportHub
+Table of Contents
+Features
+Getting Started
+Tech Stack
+File Structure
+Contributing
+License
+Features
+Hero Section: Eye-catching headline with a video background and call-to-action buttons.
+Services Page: Detailed information about our services with icons and descriptions.
+Blog Page: Latest articles and tutorials about computer issues and solutions.
+FAQ Page: Answers to frequently asked questions.
+Contact Page: Form to get in touch with us for support or inquiries.
+About Us Page: Information about our team and mission.
+Footer: Navigation links, social media icons, and legal notice.
+Getting Started
+To get started with the project, follow these steps:
 
-## Overview
+Prerequisites
+Ensure you have the following installed:
 
-**ITSupportHub** is a website designed to help users solve their computer-related issues. Whether you need assistance with software troubleshooting, hardware repairs, or general tech advice, ITSupportHub provides a wide range of resources to assist both beginners and tech enthusiasts alike.
+Node.js
+npm or yarn
+Installation
+Clone the repository:
 
-## Features
+bash
+Copy code
+git clone https://github.com/MishSoft/itsupporthub.git
+Navigate to the project directory:
 
-- **Troubleshooting Guides**: Step-by-step guides for solving common software and hardware issues.
-- **Tutorials**: Easy-to-follow tutorials on various computer-related topics.
-- **FAQs**: Answers to the most common questions about computer maintenance and repair.
-- **Contact Support**: Reach out to our team for personalized assistance.
+bash
+Copy code
+cd itsupporthub
+Install dependencies:
 
-## Tech Stack
+bash
+Copy code
+npm install
+or
 
-- **Frontend**: Next.js (React with TypeScript) and Tailwind CSS
-- **Backend**: Node.js with Express
-- **Database**: MongoDB
-- **Hosting**: [Your Hosting Platform] (e.g., Vercel, Netlify)
+bash
+Copy code
+yarn install
+Run the development server:
 
-## Installation
+bash
+Copy code
+npm run dev
+or
 
-To run this project locally, follow these steps:
+bash
+Copy code
+yarn dev
+Open your browser and go to http://localhost:3000 to view the website.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/mishsoft/itsupporthub.git
-   ```
+Tech Stack
+Frontend: React, Tailwind CSS
+Backend: (Specify if applicable, e.g., Node.js, Express, etc.)
+Database: (Specify if applicable, e.g., MongoDB, PostgreSQL, etc.)
+Hosting: (Specify if applicable, e.g., Vercel, Netlify, etc.)
+File Structure
+Here’s a brief overview of the file structure:
 
-2. Navigate to the project directory:
-   ```bash
-   cd itsupporthub
-   ```
+markdown
+Copy code
+/app
+  /components
+    - Footer.tsx
+    - Header.tsx
+    - Hero.tsx
+    - Service.tsx
+  /pages
+    - /blog
+      - page.tsx
+    - /contact
+      - page.tsx
+    - /faq
+      - page.tsx
+    - /services
+      - page.tsx
+    - /about
+      - page.tsx
+    - _app.tsx
+    - index.tsx
+  /public
+    - hero.mp4
+    - (other public assets)
+  /styles
+    - globals.css
+  - next.config.js
+  - tailwind.config.js
+  - tsconfig.json
+  - README.md
+Contributing
+If you would like to contribute to the project, please follow these steps:
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-4. Set up environment variables:
-   - Create a `.env.local` file in the root directory.
-   - Add your environment-specific variables, such as database connection strings and API keys. Example:
-     ```env
-     MONGODB_URI=your_mongodb_connection_string
-     NEXT_PUBLIC_API_KEY=your_public_api_key
-     ```
-
-5. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-6. Open your browser and navigate to `http://localhost:3000` to view the website.
-
-## Usage
-
-1. **Home Page**: Explore the homepage, where you'll find an overview of the services offered.
-2. **Guides and Tutorials**: Navigate to the "Guides" or "Tutorials" section to find helpful resources for solving your computer issues.
-3. **Contact**: Use the contact form to reach out to our support team for personalized help.
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeatureName`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeatureName`).
-5. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## Contact
-
-For any inquiries or feedback, please contact us at:
-- **Email**: support@itsupporthub.com
-- **Website**: [itsupporthub.com](http://itsupporthub.com)
+Fork the repository.
+Create a new branch (git checkout -b feature/your-feature).
+Make your changes.
+Commit your changes (git commit -am 'Add new feature').
+Push to the branch (git push origin feature/your-feature).
+Create a new Pull Request.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.

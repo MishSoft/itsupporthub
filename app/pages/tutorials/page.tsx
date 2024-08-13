@@ -19,6 +19,8 @@ const ExploreVideos: React.FC = () => {
   const [nextPageToken, setNextPageToken] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState<boolean>(true);
 
+  const API_KEY = "AIzaSyBFqtIvr8zfvuugD1nDM59ljWi6i0hzfVw";
+
   const fetchVideos = async (pageToken: string | null = null) => {
     setLoading(true);
     try {
@@ -30,7 +32,7 @@ const ExploreVideos: React.FC = () => {
             q: "programming tutorial computer help",
             type: "video",
             maxResults: 12,
-            key: process.env.NEXT_PUBLIC_YOUTUBE_API_KEY,
+            key: API_KEY,
             pageToken: pageToken || "",
           },
         }

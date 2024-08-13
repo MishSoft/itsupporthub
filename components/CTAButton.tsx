@@ -5,6 +5,7 @@ import React from "react";
 interface CTAButtonProps {
   text: string;
   link: string;
+  className?: string;
 }
 
 const CTAButton = ({ text, link }: CTAButtonProps) => {

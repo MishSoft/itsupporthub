@@ -1,13 +1,16 @@
 "use client";
 import React, { useState } from "react";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle the search functionality here
-    console.log("Search query:", query);
+    onSearch(query);
   };
 
   return (
@@ -20,7 +23,7 @@ const SearchBar = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for help or tutorials..."
-        className="border border-gray-300 rounded-lg py-2 px-4 w-full md:w-1/2"
+        className="border border-gray-300 text-slate-600 rounded-lg py-2 px-4 w-full md:w-1/2"
       />
       <button
         type="submit"

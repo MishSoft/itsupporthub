@@ -1,50 +1,40 @@
-// app/blog/page.tsx
-import React from "react";
-import Link from "next/link";
+"use client";
+// app/blog/[id]/page.tsx
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-// Example blog data (replace this with actual data fetching)
-const blogs = [
-  {
-    id: "1",
-    title: "Understanding JavaScript Closures",
-    summary:
-      "A deep dive into closures in JavaScript, including use cases and examples.",
-  },
-  {
-    id: "2",
-    title: "Top 10 CSS Tricks for Modern Web Design",
-    summary:
-      "Learn about the top 10 CSS tricks that can make your web design more effective and stylish.",
-  },
-  {
-    id: "3",
-    title: "How to Optimize React Performance",
-    summary:
-      "Tips and techniques to enhance the performance of your React applications.",
-  },
-  // Add more blog posts as needed
-];
+// Define a TypeScript interface for the blog post
+interface BlogPost {
+  title: string;
+  content: string;
+}
 
-const BlogPage = () => {
+const BlogPostPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [blog, setBlog] = useState<BlogPost | null>(null);
+
+  useEffect(() => {
+    if (id) {
+      // Replace with your data fetching logic
+      fetch(`/api/blogs/${id}`)
+        .then((response) => response.json())
+        .then((data: BlogPost) => setBlog(data));
+    }
+  }, [id]);
+
+  if (!blog) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Blog</h1>
-      <div className="space-y-6">
-        {blogs.map((blog) => (
-          <div key={blog.id} className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
-            <p className="text-gray-700 mb-4">{blog.summary}</p>
-            <Link
-              className="text-blue-500 hover:underline"
-              href={`/blog/${blog.id}`}
-            >
-              Read more
-            </Link>
-          </div>
-        ))}
+      <h1 className="text-3xl font-bold mb-6">{blog.title}</h1>
+      <div className="prose">
+        <p>{blog.content}</p>
       </div>
     </div>
   );
 };
 
-export default BlogPage;
+export default BlogPostPage;

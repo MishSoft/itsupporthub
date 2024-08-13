@@ -1,14 +1,14 @@
-// components/Hero.tsx
 import React from "react";
 import SearchBar from "./SearchBar";
 import CTAButton from "./CTAButton";
-import FeatureHighlights from "./FeatureHighlights";
-import NewsletterSignup from "./NewsletterSignup";
 
-const Hero = () => {
+interface HeroProps {
+  onSearch: (query: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onSearch }) => {
   return (
     <section className="relative overflow-hidden text-white py-24">
-      {/* Video Background */}
       <video
         className="absolute top-0 h-screen left-0 w-full object-cover -z-10"
         autoPlay
@@ -19,7 +19,6 @@ const Hero = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black opacity-50 -z-10"></div>
 
       <div className="relative container mx-auto text-center px-4">
@@ -30,13 +29,12 @@ const Hero = () => {
           Expert advice, tutorials, and support for all your computer needs.
         </p>
         <div className="mb-8">
-          <SearchBar />
+          <SearchBar onSearch={onSearch} />
         </div>
         <div className="mt-8 flex flex-col gap-4 items-center">
-          <CTAButton text="Get Help Now" link="/get-help" />
+          <CTAButton text="Get Help Now" link="/pages/get-help" />
           <CTAButton text="Explore Tutorials" link="/pages/tutorials" />
         </div>
-        {/* Optionally include NewsletterSignup here if needed */}
       </div>
     </section>
   );

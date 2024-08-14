@@ -15,31 +15,41 @@ export default function Home() {
     query: string,
     pageToken: string | null = null
   ) => {
-    const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(
-      query
-    )}&key=${API_KEY}${pageToken ? `&pageToken=${pageToken}` : ""}`;
+    try {
+      const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+      const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(
+        query
+      )}&key=${API_KEY}${pageToken ? `&pageToken=${pageToken}` : ""}`;
 
-    const response = await fetch(searchUrl);
-    const data = await response.json();
+      const response = await fetch(searchUrl);
 
-    if (pageToken) {
-      setVideos((prevVideos) => [...prevVideos, ...data.items]);
-    } else {
-      setVideos(data.items);
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (pageToken) {
+        setVideos((prevVideos) => [...prevVideos, ...data.items]);
+      } else {
+        setVideos(data.items);
+      }
+
+      setNextPageToken(data.nextPageToken || null);
+    } catch (error) {
+      console.error("Error fetching videos:", error);
+      alert("Failed to fetch videos. Please try again later.");
     }
-
-    setNextPageToken(data.nextPageToken || null);
   };
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    fetchVideos(query);
+    fetchVideos(query); // Ensure the `query` is passed here
   };
 
   const loadMoreVideos = () => {
     if (nextPageToken) {
-      fetchVideos(searchQuery, nextPageToken);
+      fetchVideos(searchQuery, nextPageToken); // Ensure the `query` is passed here as well
     }
   };
 

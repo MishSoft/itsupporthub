@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Hero from "../components/Hero";
-import SearchBar from "@/components/SearchBar";
 import FeatureHighlights from "@/components/FeatureHighlights";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import TutorialCard from "@/components/TutorialCard";
@@ -15,30 +14,41 @@ export default function Home() {
     query: string,
     pageToken: string | null = null
   ) => {
+    const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+    console.log("API Key:", API_KEY); // Check if API key is correctly loaded
+
+    if (!API_KEY) {
+      console.error("YouTube API key is missing!");
+      alert("Failed to fetch videos. API key is missing.");
+      return;
+    }
+
     try {
-      const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
       const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(
         query
       )}&key=${API_KEY}${pageToken ? `&pageToken=${pageToken}` : ""}`;
-
       const response = await fetch(searchUrl);
-
       if (!response.ok) {
-        throw new Error(`API error: ${response.status} ${response.statusText}`);
+        const errorData = await response.json();
+        throw new Error(
+          `API error: ${response.status} ${response.statusText} - ${errorData.error.message}`
+        );
       }
-
       const data = await response.json();
-
-      if (pageToken) {
-        setVideos((prevVideos) => [...prevVideos, ...data.items]);
-      } else {
-        setVideos(data.items);
-      }
-
+      setVideos((prevVideos) =>
+        pageToken ? [...prevVideos, ...data.items] : data.items
+      );
       setNextPageToken(data.nextPageToken || null);
-    } catch (error) {
-      console.error("Error fetching videos:", error);
-      alert("Failed to fetch videos. Please try again later.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error fetching videos:", error.message);
+        alert(
+          `Failed to fetch videos. Please try again later. ${error.message}`
+        );
+      } else {
+        console.error("Unknown error:", error);
+        alert("An unknown error occurred. Please try again later.");
+      }
     }
   };
 
@@ -56,10 +66,8 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col gap-8 mb-10">
       <Hero onSearch={handleSearch} />
-      {/* <SearchBar onSearch={handleSearch} /> */}
       <FeatureHighlights />
       <NewsletterSignup />
-      {/* Video Results Section */}
       <div className="container mx-auto py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {videos.map((video) => (

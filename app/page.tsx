@@ -15,7 +15,6 @@ export default function Home() {
     pageToken: string | null = null
   ) => {
     const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-    console.log("API Key:", API_KEY); // Check if API key is correctly loaded
 
     if (!API_KEY) {
       console.error("YouTube API key is missing!");
@@ -54,12 +53,12 @@ export default function Home() {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    fetchVideos(query); // Ensure the `query` is passed here
+    fetchVideos(query);
   };
 
   const loadMoreVideos = () => {
     if (nextPageToken) {
-      fetchVideos(searchQuery, nextPageToken); // Ensure the `query` is passed here as well
+      fetchVideos(searchQuery, nextPageToken);
     }
   };
 

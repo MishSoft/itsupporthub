@@ -37,7 +37,7 @@ const links = [
 
 const Nav: React.FC = () => {
   const pathname = usePathname();
-  console.log(pathname);
+
   return (
     <nav className="items-center gap-8 hidden md:flex">
       {links.map((link, index) => {

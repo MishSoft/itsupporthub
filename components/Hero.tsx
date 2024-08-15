@@ -28,10 +28,10 @@ const Hero: React.FC<HeroProps> = ({ onSearch }) => {
         <p className="text-lg md:text-xl mb-8">
           Expert advice, tutorials, and support for all your computer needs.
         </p>
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <SearchBar onSearch={onSearch} />
-        </div>
-        <div className="mt-8 flex flex-col gap-4 items-center">
+        </div> */}
+        <div className="mt-8 flex flex-col md:flex-row justify-center gap-4 items-center">
           <CTAButton text="Get Help Now" link="/pages/get-help" />
           <CTAButton text="Explore Tutorials" link="/pages/tutorials" />
         </div>

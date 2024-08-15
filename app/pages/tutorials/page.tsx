@@ -1,12 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
-import FeatureHighlights from "@/components/FeatureHighlights";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import TutorialCard from "@/components/TutorialCard";
 
-export default function Home() {
+export default function page() {
   const [videos, setVideos] = useState<any[]>([]);
   const [nextPageToken, setNextPageToken] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -55,17 +52,15 @@ export default function Home() {
 
   // Fetch default videos on component mount
   useEffect(() => {
-    fetchVideos("trending"); // Replace "trending" with your desired default search query
+    fetchVideos("node, python, programming");
   }, []);
 
   return (
     <main className="min-h-screen flex flex-col gap-8 mb-10">
-      <Hero onSearch={handleSearch} />
-      {/* <SearchBar onSearch={handleSearch} /> */}
-      <FeatureHighlights />
-      <NewsletterSignup />
-      {/* Video Results Section */}
       <div className="container mx-auto py-8">
+        <div className="mb-8">
+          <SearchBar onSearch={handleSearch} />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {videos.map((video) => (
             <TutorialCard
